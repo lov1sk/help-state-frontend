@@ -15,25 +15,25 @@ const SideBar = () => {
         <Sidebar aria-label="Sidebar with content separator example">
           <Sidebar.Items>
             <Sidebar.ItemGroup>
-              <Sidebar.Item href="#" icon={HiChartPie}>
+              <Sidebar.Item href="/admin/active-reports" icon={HiChartPie}>
                 Ocorrências ativas
               </Sidebar.Item>
-              <Sidebar.Item href="#" icon={HiViewBoards}>
+              <Sidebar.Item href="/admin" icon={HiViewBoards}>
                 Locais de ajuda
               </Sidebar.Item>
 
-              <Sidebar.Item href="#" icon={HiUser}>
+              <Sidebar.Item href="/admin" icon={HiUser}>
                 Conta
               </Sidebar.Item>
-              <Sidebar.Item href="#" icon={HiArrowSmRight}>
+              <Sidebar.Item href="/login" icon={HiArrowSmRight}>
                 Sair
               </Sidebar.Item>
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
-              <Sidebar.Item href="#" icon={HiViewBoards}>
+              <Sidebar.Item href="https://react.dev/" icon={HiViewBoards}>
                 Documentação
               </Sidebar.Item>
-              <Sidebar.Item href="#" icon={BiBuoy}>
+              <Sidebar.Item href="https://react.dev/" icon={BiBuoy}>
                 Ajuda
               </Sidebar.Item>
             </Sidebar.ItemGroup>

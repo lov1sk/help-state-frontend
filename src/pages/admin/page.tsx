@@ -4,7 +4,7 @@ export function AdminHomePage() {
   return (
     <div>
       <div className="pt-40">
-        <h1>Bem vindo XXXX, Como podemos ajudar hoje?</h1>
+        <h1 className="text-5xl">Bem vindo XXXX, Como podemos ajudar hoje?</h1>
       </div>
       <div className="pt-20 flex justify-center">
         <div id="Cartões" className="space-y-10 pt-10">
@@ -17,7 +17,7 @@ export function AdminHomePage() {
                 <h2 className="card-title">Verificar ocorrências ativas</h2>
                 <p>Verifique municipios disponíveis em seu estado</p>
                 <div className="card-actions justify-end">
-                  <Link to={"/active-reports"}>
+                  <Link to={"/admin/active-reports"}>
                     <button className="btn btn-primary">Verificar</button>
                   </Link>
                 </div>
@@ -36,7 +36,9 @@ export function AdminHomePage() {
                 <h2 className="card-title">Verificar ocorrências concluídas</h2>
                 <p>Verifique as ocorrencias concluídas</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Verificar</button>
+                <Link to={"/admin/active-reports"}>
+                    <button className="btn btn-primary">Verificar</button>
+                  </Link>
                 </div>
               </div>
             </div>
