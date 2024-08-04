@@ -1,6 +1,24 @@
 import { Label, Select } from "flowbite-react";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/auth-context";
 
 export const GetReportsActive = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, isAdmin } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else if (!isAdmin) {
+      navigate("/admin/active-reports");
+    }
+  }, [isAuthenticated, isAdmin, navigate]);
+
+  if (!isAuthenticated || !isAdmin) {
+    return null; 
+  }
+
   return (
     <div className="pt-20">
       <div className="flex justify-start pb-10">

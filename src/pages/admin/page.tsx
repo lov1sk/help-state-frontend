@@ -1,6 +1,23 @@
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth-context";
 
 export function AdminHomePage() {
+  const navigate = useNavigate();
+  const { isAuthenticated, isAdmin } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else if (!isAdmin) {
+      navigate("/admin");
+    }
+  }, [isAuthenticated, isAdmin, navigate]);
+
+  if (!isAuthenticated || !isAdmin) {
+    return null; 
+  }
+
   return (
     <div>
       <div className="pt-40">
@@ -9,7 +26,7 @@ export function AdminHomePage() {
       <div className="pt-20 flex justify-center">
         <div id="Cartões" className="space-y-10 pt-10">
           <div>
-            <div className=" w-96 shadow-xl border-4 border-black bg-white rounded ">
+            <div className="w-96 shadow-xl border-4 border-black bg-white rounded">
               <figure>
                 <img src="./public/report.svg" alt="reports" />
               </figure>
@@ -28,7 +45,7 @@ export function AdminHomePage() {
           {/* Final card 1 */}
 
           <div>
-            <div className=" w-96 shadow-xl border-4 border-black bg-white rounded ">
+            <div className="w-96 shadow-xl border-4 border-black bg-white rounded">
               <figure>
                 <img src="./public/history.svg" alt="Shoes" />
               </figure>
@@ -36,7 +53,7 @@ export function AdminHomePage() {
                 <h2 className="card-title">Verificar ocorrências concluídas</h2>
                 <p>Verifique as ocorrencias concluídas</p>
                 <div className="card-actions justify-end">
-                <Link to={"/admin/active-reports"}>
+                  <Link to={"/admin/active-reports"}>
                     <button className="btn btn-primary">Verificar</button>
                   </Link>
                 </div>
