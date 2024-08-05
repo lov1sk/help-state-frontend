@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 
 const signInFormSchema = z.object({
-  email: z.string(),
+  username: z.string(),
   password: z.string(),
 });
 
@@ -42,14 +42,14 @@ export function LoginPage() {
       >
         <Controller
           control={control}
-          name="email"
+          name="username"
           render={({ field }) => (
             <Input
               {...field}
-              title="E-mail"
-              htmlFor="email"
-              type="email"
-              placeholder="Digite seu e-mail"
+              title="Nome de usuario"
+              htmlFor="username"
+              type="text"
+              placeholder="Digite seu nome de usuario"
             />
           )}
         />

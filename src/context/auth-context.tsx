@@ -11,7 +11,7 @@ type StorageToken = {
   payload: ReceiveJwtPayload;
 };
 type SignInProps = {
-  email: string;
+  username: string;
   password: string;
 };
 
@@ -38,7 +38,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   async function getUserProfile(token: string) {
-    const { data } = await api.get(`/citizen/`, {
+    console.log({ msg: "Tentando buscar dados perfil", token });
+
+    const { data } = await api.get(`/profile/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -47,18 +49,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function register(props: RegisterUserRequest) {
-    const { data } = await api.post("/citizen/", props);
+    const { data } = await api.post("/profile/", props);
     console.log(data);
   }
 
-  async function signIn({ email, password }: SignInProps) {
+  async function signIn({ username, password }: SignInProps) {
     // Mandamos as credenciais para o backend validar
-    const { data } = await api.post("/citizen/auth", {
-      email,
+    const { data } = await api.post("/profile/auth", {
+      username,
       password,
     });
 
     const token = data.access_token;
+    console.log({ token });
+
     //Se houver sucesso, o usuario é enviado para a tela inicial
     if (!token) {
       return alert("Error when auth");

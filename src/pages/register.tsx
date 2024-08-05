@@ -10,11 +10,9 @@ import { FormErrorMessage } from "../components/form-error-message";
 import { RadixSelect } from "../components/select";
 import { SelectItem } from "../components/select-item";
 import { ufs } from "../common/constants";
-import { api } from "../lib/axios";
 import { RegisterUserRequest } from "../common/types";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
-import { toast } from "sonner";
 const registerFormSchema = z.object({
   name: z.string(),
   age: z.coerce.number(),
@@ -58,7 +56,7 @@ export function RegisterPage() {
       <Logo2x className="mx-auto" />
       <h1 className="text-5xl font-extrabold">Cadastro</h1>
       <form
-        className=" w-[450px] flex flex-col gap-5"
+        className=" w-[550px] flex flex-col gap-5"
         onSubmit={handleSubmit(handleSignIn)}
       >
         <div className="flex gap-4">

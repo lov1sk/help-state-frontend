@@ -1,23 +1,6 @@
-import { useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth-context";
+import { Link } from "react-router-dom";
 
 export function AdminHomePage() {
-  const navigate = useNavigate();
-  const { isAuthenticated, isAdmin } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    } else if (!isAdmin) {
-      navigate("/admin");
-    }
-  }, [isAuthenticated, isAdmin, navigate]);
-
-  if (!isAuthenticated || !isAdmin) {
-    return null; 
-  }
-
   return (
     <div>
       <div className="pt-40">
